@@ -1,0 +1,5 @@
+name: DarkAuth
+version: '${project.version}'
+main: sk.adr3ez.spigot.darkauth.bungee.BungeeMain
+authors: [ Adr3ez_, DarkLabs ]
+description: DarkAuthentication plugin is made for many ways to protect your server in one.

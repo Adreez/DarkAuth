@@ -1,0 +1,11 @@
+name: DarkAuth
+version: '${project.version}'
+main: sk.adr3ez.darkauth.bukkit.BukkitMain
+api-version: 1.19
+authors: [ Adr3ez_, DarkLabs ]
+description: DarkAuthentication plugin is made for many ways to protect your server in one.
+commands:
+  register:
+    description: Default registering command
+  login:
+    description: Default login command
