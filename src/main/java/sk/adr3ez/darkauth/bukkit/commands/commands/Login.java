@@ -3,7 +3,6 @@ package sk.adr3ez.darkauth.bukkit.commands.commands;
 import org.bukkit.entity.Player;
 import sk.adr3ez.darkauth.bukkit.commands.CommandInfo;
 import sk.adr3ez.darkauth.bukkit.commands.PluginCommand;
-import sk.adr3ez.darkauth.shared.utils.HashService;
 import sk.adr3ez.darkauth.shared.utils.RegisterService;
 
 @CommandInfo(name = "login", requiresPlayer = true)

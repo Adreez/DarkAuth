@@ -18,14 +18,14 @@ public class RegisterService {
     }
 
     public boolean isRegistered() {
-        return BukkitMain.sqlGetter.exists(player.getName());
+        return BukkitMain.sqlGetter.data().exists(player.getName());
     }
 
     /*
      * Get password from database
      */
     public String getHashedPassword() {
-        return BukkitMain.sqlGetter.getHashedPassword(player.getName());
+        return BukkitMain.sqlGetter.data().getHashedPassword(player.getName());
     }
 
     public boolean register() {
@@ -33,7 +33,7 @@ public class RegisterService {
             if (BukkitMain.mysql.isConnected()) {
                 String hashedPassword = new HashService(notHashedPass).hashPassword().getGeneratedPassword();
 
-                BukkitMain.sqlGetter.createPlayer(player, hashedPassword);
+                BukkitMain.sqlGetter.data().createPlayer(player, hashedPassword);
                 return true;
             }
         }
@@ -44,7 +44,7 @@ public class RegisterService {
     Returns if passwords are same :D
      */
     public boolean login(String nothashedpass) {
-        return new HashService(nothashedpass).hashPassword().getGeneratedPassword().equals(BukkitMain.sqlGetter.getHashedPassword(player.getName()));
+        return new HashService(nothashedpass).hashPassword().getGeneratedPassword().equals(BukkitMain.sqlGetter.data().getHashedPassword(player.getName()));
     }
 
 }

@@ -5,7 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.reflections.Reflections;
 import sk.adr3ez.darkauth.bukkit.commands.PluginCommand;
 import sk.adr3ez.darkauth.bukkit.events.ListenerManager;
-import sk.adr3ez.darkauth.bukkit.utils.Files;
+import sk.adr3ez.darkauth.shared.utils.YamlFiles;
 import sk.adr3ez.darkauth.shared.sql.MySQL;
 import sk.adr3ez.darkauth.shared.sql.SQLGetter;
 
@@ -17,7 +17,7 @@ import java.util.logging.Level;
 
 public final class BukkitMain extends JavaPlugin {
 
-    public static Files config;
+    public static YamlFiles config;
     public static MySQL mysql;
     public static SQLGetter sqlGetter;
     @Override
@@ -25,9 +25,9 @@ public final class BukkitMain extends JavaPlugin {
         // Plugin startup logic
         new ListenerManager(this);
 
-        config = new Files(this, "config.yml");
+        config = new YamlFiles(this, "config.yml");
         mysql = new MySQL();
-        sqlGetter = new SQLGetter("data");
+        sqlGetter = new SQLGetter();
 
         for (Class<? extends PluginCommand> clazz : new Reflections(getClass().getPackage().getName() + ".commands.commands")
                 .getSubTypesOf(PluginCommand.class)) {
@@ -41,10 +41,10 @@ public final class BukkitMain extends JavaPlugin {
         try {
             mysql.connect();
         } catch (SQLException e) {
-            Bukkit.getLogger().log(Level.WARNING, "§cError happened during connection to database!");
+            Bukkit.getLogger().log(Level.WARNING, "§cError happened while the plugin tried to connect to database!");
         }
         if (mysql.isConnected()) {
-            sqlGetter.createTable();
+            sqlGetter.data().createTable();
         }
     }
 

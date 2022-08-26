@@ -11,7 +11,7 @@
 
     <name>DarkAuth</name>
 
-    <description>DarkAuthentication plugin is made for many ways to protect your server in one.</description>
+    <description>DarkAuthentication plugin is made for multify.eu.</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -103,6 +103,11 @@
             <groupId>org.reflections</groupId>
             <artifactId>reflections</artifactId>
             <version>0.10.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>23.0.0</version>
         </dependency>
     </dependencies>
 </project>
