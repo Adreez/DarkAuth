@@ -41,6 +41,7 @@
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <outputFile>C:\pracovná plocha\FOLDERS\1st - Minecraft\testing1.19\plugins\DarkAuth.jar</outputFile>
+                            <outputFile>C:\pracovná plocha\FOLDERS\1st - Minecraft\bungeefor1.19\plugins\DarkAuth.jar</outputFile>
                         </configuration>
                     </execution>
                 </executions>
