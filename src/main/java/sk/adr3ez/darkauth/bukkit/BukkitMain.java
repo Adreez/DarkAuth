@@ -38,11 +38,6 @@ public final class BukkitMain extends JavaPlugin {
                 throw new RuntimeException(e);
             }
         }
-        try {
-            mysql.connect();
-        } catch (SQLException e) {
-            Bukkit.getLogger().log(Level.WARNING, "§cError happened while the plugin tried to connect to database!");
-        }
         if (mysql.isConnected()) {
             sqlGetter.data().createTable();
         }

@@ -6,6 +6,14 @@ import java.sql.SQLException;
 
 public class MySQL {
 
+    public MySQL() {
+        try {
+            connect();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private static Connection connection;
 
     public boolean isConnected() {

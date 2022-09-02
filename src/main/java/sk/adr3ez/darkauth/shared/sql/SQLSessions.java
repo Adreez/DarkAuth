@@ -23,9 +23,11 @@ public class SQLSessions {
         }
     }
 
+    /* Creates new session only on sucessfull login
+     */
     public void createSession(Player player) {
         try {
-            if (!exists(player)) {
+            if (!exists(player.getName())) {
                 PreparedStatement ps = MySQL.getConnection().prepareStatement("INSERT INTO " + table + "(nick,uuid,loginMillis,ip) VALUES (?,?,?,?)");
                 ps.setString(1, player.getName());
                 ps.setString(2, player.getUniqueId().toString());
@@ -48,12 +50,25 @@ public class SQLSessions {
         }
     }
 
-    public boolean exists(Player player) {
+    public boolean exists(String player) {
         try {
             PreparedStatement ps = MySQL.getConnection().prepareStatement("SELECT * FROM " + table + " WHERE nick=?");
-            ps.setString(1, player.getName());
+            ps.setString(1, player);
             ResultSet results = ps.executeQuery();
             return results.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean compareIps(String nick, String ip1) {
+        try {
+            PreparedStatement ps = MySQL.getConnection().prepareStatement("SELECT ip FROM " + table + " WHERE nick=?");
+            ps.setString(1, nick);
+            ResultSet rs = ps.executeQuery();
+            String ip2 = rs.getString("ip");
+            return ip1.equals(ip2);
         } catch (SQLException e) {
             e.printStackTrace();
         }

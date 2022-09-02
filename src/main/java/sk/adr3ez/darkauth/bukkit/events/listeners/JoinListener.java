@@ -10,9 +10,11 @@ public class JoinListener implements Listener {
 
     @EventHandler
     public void onJoinEvent(PlayerJoinEvent e) {
-        if (!BukkitMain.mysql.isConnected()) {
-            e.getPlayer().kickPlayer(ChatColor.translateAlternateColorCodes('&',
-                    "&6Omlouváme se ale není možné načítat data z naší databáze\n\n&7Kontaktuj prosím naší podporu na discordu"));
+        if (BukkitMain.config.get().getBoolean("Bungee")) {
+            if (!BukkitMain.mysql.isConnected()) {
+                e.getPlayer().kickPlayer(ChatColor.translateAlternateColorCodes('&',
+                        "&6Omlouváme se ale není možné načítat data z naší databáze\n\n&7Kontaktuj prosím naší podporu na discordu"));
+            }
         }
     }
 
