@@ -1,6 +1,5 @@
 package sk.adr3ez.darkauth.bukkit;
 
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.reflections.Reflections;
 import sk.adr3ez.darkauth.bukkit.commands.PluginCommand;
@@ -10,9 +9,7 @@ import sk.adr3ez.darkauth.shared.sql.MySQL;
 import sk.adr3ez.darkauth.shared.sql.SQLGetter;
 
 import java.lang.reflect.InvocationTargetException;
-import java.sql.SQLException;
 import java.util.Objects;
-import java.util.logging.Level;
 
 
 public final class BukkitMain extends JavaPlugin {
@@ -37,9 +34,6 @@ public final class BukkitMain extends JavaPlugin {
             } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
                 throw new RuntimeException(e);
             }
-        }
-        if (mysql.isConnected()) {
-            sqlGetter.data().createTable();
         }
     }
 

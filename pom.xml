@@ -17,6 +17,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+
     <build>
         <plugins>
             <plugin>
@@ -40,9 +41,7 @@
                         </goals>
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
-                            <outputFile>C:\pracovná plocha\FOLDERS\1st - Minecraft\testing1.19\lobby\plugins</outputFile>
-                            <outputFile>C:\pracovná plocha\FOLDERS\1st - Minecraft\testing1.19\auth\plugins</outputFile>
-                            <outputFile>C:\pracovná plocha\FOLDERS\1st - Minecraft\bungeefor1.19\plugins\DarkAuth.jar</outputFile>
+                            <outputFile>C:\pracovná plocha\FOLDERS\1st - Minecraft\testing1.19\auth\plugins\darkauth.jar</outputFile>
                         </configuration>
                     </execution>
                 </executions>

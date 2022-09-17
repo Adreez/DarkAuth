@@ -1,1 +1,14 @@
+#If set to true the plugin will start communication with bungee. Check if
+#in spigot.yml you have bungeecord set to true.
 bungee: true
+Bungee:
+  #Sends player to server after succesfull login.
+  sendPlayerTo: lobby
+
+Spawn:
+  world: world
+  x: 10
+  y: 80
+  z: 10
+  yaw: 0
+  pitch: 0

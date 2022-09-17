@@ -9,3 +9,5 @@ commands:
     description: Default registering command
   login:
     description: Default login command
+  authadmin:
+    description: Default command for admins

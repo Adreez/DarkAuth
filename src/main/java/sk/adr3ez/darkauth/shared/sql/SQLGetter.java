@@ -7,10 +7,10 @@ public class SQLGetter {
         sessions().createTable();
     }
     public SQLData data() {
-        return new SQLData();
+        return new SQLData("data");
     }
     public SQLSessions sessions() {
-        return new SQLSessions();
+        return new SQLSessions("sessions");
     }
 
 }

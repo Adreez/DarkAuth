@@ -10,14 +10,16 @@ import java.util.UUID;
 
 public class SQLData {
 
-    String table = "data";
-
+    String table;
+    public SQLData(String table) {
+        this.table = table;
+    }
 
     public void createTable() {
         PreparedStatement ps;
         try {
             ps = MySQL.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS " + table + "(nick VARCHAR(100), " +
-                    "uuid VARCHAR(100), password VARCHAR(255), lastLoginMillis BIGINT(100), ip VARCHAR(100),2fa BOOLEAN, PRIMARY KEY (nick))");
+                    "uuid VARCHAR(100), password VARCHAR(100), lastLoginMillis BIGINT(100), ip VARCHAR(100), 2fa BOOLEAN, PRIMARY KEY (nick))");
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

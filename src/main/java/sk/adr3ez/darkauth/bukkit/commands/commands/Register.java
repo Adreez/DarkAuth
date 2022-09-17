@@ -16,7 +16,7 @@ public class Register extends PluginCommand {
 
                 if (!rs.isRegistered()) {
                     if (rs.setPassword(args[1]).register()) {
-                        p.sendMessage("Sucessfully registered!");
+                        p.sendMessage("Sucessfully registered! - Use /login <pass> to login to server");
                     } else {
                         p.sendMessage("Něco se pokazilo, kontaktuj prosím naši podporu nebo to skús znovu :D");
                     }

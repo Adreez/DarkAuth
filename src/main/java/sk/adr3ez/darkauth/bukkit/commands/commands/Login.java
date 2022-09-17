@@ -11,22 +11,25 @@ public class Login extends PluginCommand {
 
     @Override
     public void execute(Player p, String[] args) {
-        if (args.length == 1) {
-            String password = args[0];
+        if (BukkitMain.sqlGetter.data().exists(p.getName())) {
+            if (args.length == 1) {
+                String password = args[0];
 
-            RegisterService rs = new RegisterService(p);
+                RegisterService rs = new RegisterService(p);
 
-            if (rs.getHashedPassword() != null) {
-                if (rs.login(password)) {
-                    //SessionService
-                    p.sendMessage("You logged in!");
-                    BukkitMain.sqlGetter.sessions().createSession(p);
-                } else {
-                    p.sendMessage("Zadal si nesprávne heslo!");
+                if (rs.getHashedPassword() != null) {
+                    if (rs.login(password)) {
+                        BukkitMain.sqlGetter.sessions().createSession(p, false);
+                        p.sendMessage("You logged in!");
+                    } else {
+                        p.sendMessage("Zadal si nesprávne heslo!");
+                    }
                 }
+            } else {
+                p.sendMessage("Použij /login <heslo>");
             }
         } else {
-            p.sendMessage("Použij /login <heslo>");
+            p.sendMessage("You must use /register <pass> <pass>");
         }
     }
 
