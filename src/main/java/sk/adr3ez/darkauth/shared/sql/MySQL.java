@@ -1,8 +1,12 @@
 package sk.adr3ez.darkauth.shared.sql;
 
+import org.bukkit.Bukkit;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MySQL {
 
@@ -10,7 +14,8 @@ public class MySQL {
         try {
             connect();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Bukkit.getLogger().log(Level.WARNING, "Unable to load database");
+            //throw new RuntimeException(e);
         }
     }
 

@@ -44,7 +44,7 @@ public class SQLSessions {
 
     public void deleteSession(Player player) {
         try {
-            PreparedStatement ps = MySQL.getConnection().prepareStatement("DELETE * FROM " + table + " WHERE nick=?");
+            PreparedStatement ps = MySQL.getConnection().prepareStatement("DELETE FROM " + table + " WHERE nick=?");
             ps.setString(1, player.getName());
             ps.executeUpdate();
         } catch (SQLException e) {

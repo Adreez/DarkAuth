@@ -5,14 +5,10 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class HashService {
-    private final String notHashedPassword;
     private String generatedPassword = null;
 
-    public HashService(String notHashedPass) {
-        notHashedPassword = notHashedPass;
-    }
+    public HashService(String notHashedPassword) {
 
-    public HashService hashPassword() {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-512");
             byte[] bytes = md.digest(notHashedPassword.getBytes(StandardCharsets.UTF_8));
@@ -27,10 +23,9 @@ public class HashService {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        return this;
     }
 
-    public String getGeneratedPassword() {
+    public String get() {
         return generatedPassword;
     }
 

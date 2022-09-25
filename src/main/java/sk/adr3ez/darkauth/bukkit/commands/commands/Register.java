@@ -3,6 +3,7 @@ package sk.adr3ez.darkauth.bukkit.commands.commands;
 import org.bukkit.entity.Player;
 import sk.adr3ez.darkauth.bukkit.commands.CommandInfo;
 import sk.adr3ez.darkauth.bukkit.commands.PluginCommand;
+import sk.adr3ez.darkauth.shared.utils.HashService;
 import sk.adr3ez.darkauth.shared.utils.RegisterService;
 
 @CommandInfo(name = "register", requiresPlayer = true)
@@ -12,10 +13,10 @@ public class Register extends PluginCommand {
     public void execute(Player p, String[] args) {
         if (args.length == 2) {
             if (args[1].equals(args[0])) {
-                RegisterService rs = new RegisterService(p);
+                RegisterService rs = new RegisterService(p, new HashService(args[1]).get());
 
                 if (!rs.isRegistered()) {
-                    if (rs.setPassword(args[1]).register()) {
+                    if (rs.register()) {
                         p.sendMessage("Sucessfully registered! - Use /login <pass> to login to server");
                     } else {
                         p.sendMessage("Něco se pokazilo, kontaktuj prosím naši podporu nebo to skús znovu :D");

@@ -1,50 +1,33 @@
 package sk.adr3ez.darkauth.shared.utils;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import sk.adr3ez.darkauth.bukkit.BukkitMain;
+import sk.adr3ez.darkauth.bukkit.events.customlisteners.DarkAuthPlayerRegisterEvent;
 
 public class RegisterService {
 
-    protected Player player;
-    protected String notHashedPass;
+    protected final Player player;
+    protected final String hashedPass;
 
-    public RegisterService(Player p) {
+    public RegisterService(Player p, String hashedPass) {
         player = p;
-    }
-
-    public RegisterService setPassword(String notHashedPassword) {
-        notHashedPass = notHashedPassword;
-        return this;
+        this.hashedPass = hashedPass;
     }
 
     public boolean isRegistered() {
         return BukkitMain.sqlGetter.data().exists(player.getName());
     }
-
-    /*
-     * Get password from database
-     */
-    public String getHashedPassword() {
-        return BukkitMain.sqlGetter.data().getHashedPassword(player.getName());
-    }
-
     public boolean register() {
-        if (player != null && notHashedPass != null) {
+        if (player != null && hashedPass != null) {
             if (BukkitMain.mysql.isConnected()) {
-                String hashedPassword = new HashService(notHashedPass).hashPassword().getGeneratedPassword();
-
-                BukkitMain.sqlGetter.data().createPlayer(player, hashedPassword);
+                BukkitMain.sqlGetter.data().createPlayer(player, hashedPass);
+                Bukkit.getPluginManager().callEvent(new DarkAuthPlayerRegisterEvent(player, true));
                 return true;
+            } else {
+                Bukkit.getPluginManager().callEvent(new DarkAuthPlayerRegisterEvent(player, false));
             }
         }
         return false;
     }
-
-    /*
-    Returns if passwords are same :D
-     */
-    public boolean login(String nothashedpass) {
-        return new HashService(nothashedpass).hashPassword().getGeneratedPassword().equals(BukkitMain.sqlGetter.data().getHashedPassword(player.getName()));
-    }
-
 }

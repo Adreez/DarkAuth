@@ -1,10 +1,25 @@
-#If set to true the plugin will start communication with bungee. Check if
-#in spigot.yml you have bungeecord set to true.
-bungee: true
-Bungee:
-  #Sends player to server after succesfull login.
-  sendPlayerTo: lobby
+# DARK AUTH Login system made by Adr3ez_
+Settings:
+  Bungee:
+    #If set to true the plugin will start communication with bungee. Check if
+    #in spigot.yml you have bungeecord set to true.
+    enabled: false
 
+    #Sends player to server after succesfull login.
+    sendPlayerTo: lobby
+
+    #Used for main communication between servers. Is usable only on bugeecord network!
+    mainServer: auth
+
+  #Commands that are allowed to use while player is not logged.
+  AllowedCommands:
+    - "login"
+    - "register"
+
+
+
+
+#Used only on bukkit servers!!!
 Spawn:
   world: world
   x: 10
