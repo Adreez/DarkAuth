@@ -20,5 +20,8 @@ public class SessionsManager {
             BukkitMain.sqlGetter.sessions().deleteSession(p);
         }
     }
+    public boolean exists(Player p) {
+        return sessions.containsKey(p);
+    }
 
 }

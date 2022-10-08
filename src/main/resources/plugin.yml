@@ -7,7 +7,5 @@ description: DarkAuthentication plugin is made for many ways to protect your ser
 commands:
   register:
     description: Default registering command
-  login:
-    description: Default login command
   authadmin:
     description: Default command for admins

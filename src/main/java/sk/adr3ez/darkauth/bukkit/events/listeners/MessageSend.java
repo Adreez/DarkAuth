@@ -10,22 +10,13 @@ import sk.adr3ez.darkauth.bukkit.BukkitMain;
 public class MessageSend implements Listener {
 
     @EventHandler
-    public void onMessageSent(AsyncPlayerChatEvent e) {
-        if (!BukkitMain.sqlGetter.sessions().exists(e.getPlayer().getName())) {
-            e.setCancelled(true);
-        }
-    }
-
-    @EventHandler
-    public void onCommandSent(ServerCommandEvent e) {
-        if (e.getSender() instanceof Player) {
-            if (!BukkitMain.sqlGetter.sessions().exists(e.getSender().getName())) {
-                if (!BukkitMain.config.get().getStringList("Settings.AllowedCommands").contains(e.getCommand())) {
-                    e.setCancelled(true);
-                    e.getSender().sendMessage("Pro použití příkazu musíš být nejdříve přihlášen.");
+    public void onCommandSent(AsyncPlayerChatEvent e) {
+            if (!BukkitMain.sessionsManager.exists(e.getPlayer())) {
+                if (!BukkitMain.config.get().getStringList("Settings.AllowedCommands").contains(e.getMessage())) {
+                    e.getPlayer().sendMessage("Pro použití příkazu musíš být nejdříve přihlášen.");
                 }
+                e.getPlayer().sendMessage("Pro zaslání zprávy musíš být nejdříve přihlášen.");
+                e.setCancelled(true);
             }
-        }
     }
-
 }
