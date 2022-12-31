@@ -4,14 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>sk.adr3ez.spigot</groupId>
+    <groupId>sk.adr3ez</groupId>
     <artifactId>DarkAuth</artifactId>
     <version>1.0-DEV</version>
     <packaging>jar</packaging>
 
     <name>DarkAuth</name>
 
-    <description>DarkAuthentication plugin is made for multify.eu.</description>
+    <description>DarkAuthentication plugin is made for multify.eu</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
